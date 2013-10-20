@@ -1,0 +1,18 @@
+<?php
+
+/*
+ * PHP CLASSES AUTOLOADER
+ * @author: IlluminatorCologne
+ */
+
+function __autoload($className) // if a class is required, the name will be $className e.g. \de\centricore\www\Foo
+{
+    // transform the backslashes. fits for filenames like myclass.class.php
+    $fileName = str_replace("\\", "/", strtolower($className)).".class.php";
+    // the class files are in 
+    $fileName = "../class/" . $fileName;
+    if (file_exists($fileName))
+    {
+        require_once $fileName;
+    }
+}
